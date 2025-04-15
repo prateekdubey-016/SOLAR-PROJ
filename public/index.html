@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solar Energy Analytics | Optimize Your Solar Investment</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-solar-panel me-2"></i> SolarAnalytics
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#roi">ROI Calculator</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#testimonials">Testimonials</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section text-center" id="home">
+        <div class="container">
+            <h1 class="display-4 fw-bold mb-4">Maximize Your Solar Energy Potential</h1>
+            <p class="lead mb-5">AI-powered analytics to optimize your solar panel performance and maximize your return on investment</p>
+            <div class="d-flex justify-content-center gap-3">
+                <a href="#roi" class="btn btn-primary btn-lg px-4">Calculate Your Savings</a>
+                <a href="#contact" class="btn btn-outline-light btn-lg px-4">Get Started</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-5" id="features">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Our Solutions</h2>
+                <p class="lead text-muted">Tailored solar analytics for every need</p>
+            </div>
+            
+            <div class="row g-4">
+                <!-- Feature 1 -->
+                <div class="col-md-4">
+                    <div class="card feature-card h-100">
+                        <div class="card-body text-center p-4">
+                            <div class="feature-icon">
+                                <i class="fas fa-home"></i>
+                            </div>
+                            <h4 class="card-title">Residential Solutions</h4>
+                            <p class="card-text">Maximize your home solar system's output and reduce your electricity bills with our AI-powered optimization. Get real-time monitoring and personalized recommendations.</p>
+                            <a href="#" class="btn btn-outline-primary">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="col-md-4">
+                    <div class="card feature-card h-100">
+                        <div class="card-body text-center p-4">
+                            <div class="feature-icon">
+                                <i class="fas fa-building"></i>
+                            </div>
+                            <h4 class="card-title">Commercial Systems</h4>
+                            <p class="card-text">For businesses with solar installations, our platform provides detailed analytics to optimize your energy usage, reduce costs, and improve sustainability metrics.</p>
+                            <a href="#" class="btn btn-outline-primary">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="col-md-4">
+                    <div class="card feature-card h-100">
+                        <div class="card-body text-center p-4">
+                            <div class="feature-icon">
+                                <i class="fas fa-industry"></i>
+                            </div>
+                            <h4 class="card-title">Utility-Scale Farms</h4>
+                            <p class="card-text">Large-scale solar farms benefit from our predictive maintenance and performance optimization features to maximize output and minimize downtime.</p>
+                            <a href="#" class="btn btn-outline-primary">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ROI Calculator Section -->
+    <section class="py-5 bg-light" id="roi">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Solar ROI Calculator</h2>
+                <p class="lead text-muted">See how much you can save with solar energy</p>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="roi-calculator">
+                        <form id="roiCalculatorForm">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="location" class="form-label">Location</label>
+                                    <select class="form-select" id="location" required>
+                                        <option value="" selected disabled>Select your city</option>
+                                        <option value="delhi">Delhi</option>
+                                        <option value="mumbai">Mumbai</option>
+                                        <option value="bangalore">Bangalore</option>
+                                        <option value="hyderabad">Hyderabad</option>
+                                        <option value="chennai">Chennai</option>
+                                        <option value="kolkata">Kolkata</option>
+                                        <option value="pune">Pune</option>
+                                        <option value="ahmedabad">Ahmedabad</option>
+                                        <option value="jaipur">Jaipur</option>
+                                        <option value="lucknow">Lucknow</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="billType" class="form-label">Bill Type</label>
+                                    <select class="form-select" id="billType" required>
+                                        <option value="" selected disabled>Select your bill period</option>
+                                        <option value="summer">Summer Bill (High Consumption)</option>
+                                        <option value="winter">Winter Bill (Low Consumption)</option>
+                                        <option value="average">Average Monthly Bill</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="billAmount" class="form-label">Monthly Electricity Bill (₹)</label>
+                                    <input type="number" class="form-control" id="billAmount" placeholder="Enter your bill amount" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="roofArea" class="form-label">Available Roof Area (sq ft)</label>
+                                    <input type="number" class="form-control" id="roofArea" placeholder="Enter roof area" required>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary w-100 py-3">Calculate Savings</button>
+                                </div>
+                            </div>
+                        </form>
+                        
+                        <div class="result-card mt-4" id="roiResult">
+                            <div class="row text-center">
+                                <div class="col-md-4 mb-3 mb-md-0">
+                                    <h5>Current Monthly Cost</h5>
+                                    <h3 id="currentCost">₹0</h3>
+                                </div>
+                                <div class="col-md-4 mb-3 mb-md-0">
+                                    <h5>With Solar</h5>
+                                    <h3 id="solarCost">₹0</h3>
+                                </div>
+                                <div class="col-md-4">
+                                    <h5>Monthly Savings</h5>
+                                    <h3 id="savings">₹0</h3>
+                                </div>
+                            </div>
+                            <div class="mt-3">
+                                <canvas id="savingsChart"></canvas>
+                            </div>
+                            <div class="text-center mt-3">
+                                <p class="mb-0">Based on your inputs, you could save approximately <strong id="annualSavings">₹0</strong> annually!</p>
+                                <a href="#contact" class="btn btn-light mt-3">Get a Custom Quote</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+ <!-- Add the Government Subsidy Information section here -->
+ <div class="mt-4 p-3 bg-info bg-opacity-10 rounded">
+    <h5 class="mb-3"><i class="fas fa-rupee-sign me-2"></i> Government Subsidy Information</h5>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="mb-3">
+                <label class="form-label">System Capacity</label>
+                <select class="form-select" id="systemCapacity">
+                    <option value="1">1 kW</option>
+                    <option value="2">2 kW</option>
+                    <option value="3">3 kW</option>
+                    <option value="5">5 kW</option>
+                    <option value="10">10 kW</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="mb-3">
+                <label class="form-label">Subsidy Rate</label>
+                <input type="text" class="form-control" id="subsidyRate" value="₹14,000/kW" readonly>
+            </div>
+        </div>
+    </div>
+    <div class="alert alert-info">
+        <p class="mb-2"><strong>Current MNRE Subsidy Scheme (2023):</strong></p>
+        <ul class="mb-0">
+            <li>₹14,000 per kW for systems up to 3 kW</li>
+            <li>₹7,000 per kW for additional capacity between 3-10 kW</li>
+            <li>Maximum subsidy capped at ₹94,000 for 1-10 kW systems</li>
+            <li>Additional state subsidies may apply in some regions</li>
+        </ul>
+    </div>
+</div>
+
+<!-- Results card -->
+<div class="result-card mt-4" id="roiResult">
+    <div class="row text-center">
+        <div class="col-md-4 mb-3 mb-md-0">
+            <h5>Current Monthly Cost</h5>
+            <h3 id="currentCost">₹0</h3>
+        </div>
+        <div class="col-md-4 mb-3 mb-md-0">
+            <h5>With Solar</h5>
+            <h3 id="solarCost">₹0</h3>
+        </div>
+        <div class="col-md-4">
+            <h5>Monthly Savings</h5>
+            <h3 id="savings">₹0</h3>
+        </div>
+    </div>
+    <div class="mt-3">
+        <canvas id="savingsChart"></canvas>
+    </div>
+    <div class="text-center mt-3">
+        <p class="mb-0">Based on your inputs, you could save approximately <strong id="annualSavings">₹0</strong> annually!</p>
+        <a href="#contact" class="btn btn-light mt-3">Get a Custom Quote</a>
+    </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+    <!-- How It Works Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">How It Works</h2>
+                <p class="lead text-muted">Our simple three-step process to solar optimization</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="text-center">
+                        <div class="bg-primary bg-opacity-10 text-primary rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                            <i class="fas fa-plug fs-3"></i>
+                        </div>
+                        <h4 class="mt-3">1. Connect Your System</h4>
+                        <p>Integrate with your existing solar monitoring system or install our sensors for complete visibility.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="text-center">
+                        <div class="bg-primary bg-opacity-10 text-primary rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                            <i class="fas fa-chart-line fs-3"></i>
+                        </div>
+                        <h4 class="mt-3">2. Analyze Performance</h4>
+                        <p>Our AI analyzes your system's performance data to identify inefficiencies and optimization opportunities.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="text-center">
+                        <div class="bg-primary bg-opacity-10 text-primary rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                            <i class="fas fa-bolt fs-3"></i>
+                        </div>
+                        <h4 class="mt-3">3. Optimize & Save</h4>
+                        <p>Implement our recommendations to maximize energy production and minimize costs.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-5 bg-light" id="testimonials">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">What Our Customers Say</h2>
+                <p class="lead text-muted">Trusted by homeowners and businesses across India</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <div class="card-body p-4 testimonial-card">
+                            <div class="d-flex mb-3">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" class="rounded-circle me-3" width="50" height="50" alt="Customer">
+                                <div>
+                                    <h5 class="mb-0">Rajesh Kumar</h5>
+                                    <p class="text-muted mb-0">Homeowner, Delhi</p>
+                                </div>
+                            </div>
+                            <p class="card-text">"After installing SolarAnalytics, my electricity bills dropped by 65%. The system identified shading issues I didn't even know about and suggested panel repositioning that made a huge difference."</p>
+                            <div class="text-warning">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <div class="card-body p-4 testimonial-card">
+                            <div class="d-flex mb-3">
+                                <img src="https://randomuser.me/api/portraits/women/44.jpg" class="rounded-circle me-3" width="50" height="50" alt="Customer">
+                                <div>
+                                    <h5 class="mb-0">Priya Sharma</h5>
+                                    <p class="text-muted mb-0">Business Owner, Mumbai</p>
+                                </div>
+                            </div>
+                            <p class="card-text">"For our retail chain, SolarAnalytics has been a game-changer. The detailed analytics helped us optimize energy usage across all locations, saving us over ₹2 lakhs annually."</p>
+                            <div class="text-warning">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <div class="card-body p-4 testimonial-card">
+                            <div class="d-flex mb-3">
+                                <img src="https://randomuser.me/api/portraits/men/75.jpg" class="rounded-circle me-3" width="50" height="50" alt="Customer">
+                                <div>
+                                    <h5 class="mb-0">Amit Patel</h5>
+                                    <p class="text-muted mb-0">Solar Farm Manager, Gujarat</p>
+                                </div>
+                            </div>
+                            <p class="card-text">"The predictive maintenance features have reduced our downtime by 40%. We can now address issues before they impact production, thanks to SolarAnalytics' advanced monitoring."</p>
+                            <div class="text-warning">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section py-5" id="contact">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="text-center mb-5">
+                        <h2 class="fw-bold">Get In Touch</h2>
+                        <p class="lead">Ready to optimize your solar investment? Contact us today!</p>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-body p-4">
+                            <form id="contactForm">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="name" class="form-label">Name</label>
+                                        <input type="text" class="form-control" id="name" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="email" class="form-label">Email</label>
+                                        <input type="email" class="form-control" id="email" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="phone" class="form-label">Phone</label>
+                                        <input type="tel" class="form-control" id="phone">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="interest" class="form-label">I'm interested in</label>
+                                        <select class="form-select" id="interest">
+                                            <option value="residential">Residential Solutions</option>
+                                            <option value="commercial">Commercial Systems</option>
+                                            <option value="utility">Utility-Scale Farms</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="message" class="form-label">Message</label>
+                                        <textarea class="form-control" id="message" rows="4"></textarea>
+                                    </div>
+                                    <div class="col-12">
+                                        <button type="submit" class="btn btn-primary w-100 py-3">Send Message</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    
+                    <div class="row mt-4 text-center">
+                        <div class="col-md-4 mb-4 mb-md-0">
+                            <div class="p-3 bg-white bg-opacity-10 rounded">
+                                <i class="fas fa-map-marker-alt fs-4 mb-2"></i>
+                                <h5>Our Office</h5>
+                                <p class="mb-0">123 Solar Street, Bangalore, India</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4 mb-md-0">
+                            <div class="p-3 bg-white bg-opacity-10 rounded">
+                                <i class="fas fa-phone-alt fs-4 mb-2"></i>
+                                <h5>Call Us</h5>
+                                <p class="mb-0">+91 98765 43210</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="p-3 bg-white bg-opacity-10 rounded">
+                                <i class="fas fa-envelope fs-4 mb-2"></i>
+                                <h5>Email Us</h5>
+                                <p class="mb-0">info@solaranalytics.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h5><i class="fas fa-solar-panel me-2"></i> SolarAnalytics</h5>
+                    <p class="mb-0">Helping you harness the full power of solar energy through advanced analytics and AI optimization.</p>
+                </div>
+                <div class="col-md-2 mb-4 mb-md-0">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#home" class="text-white text-decoration-none">Home</a></li>
+                        <li><a href="#features" class="text-white text-decoration-none">Features</a></li>
+                        <li><a href="#roi" class="text-white text-decoration-none">ROI Calculator</a></li>
+                        <li><a href="#contact" class="text-white text-decoration-none">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4 mb-md-0">
+                    <h5>Solutions</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white text-decoration-none">Residential</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Commercial</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Utility-Scale</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">API Integration</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Connect With Us</h5>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="text-white"><i class="fab fa-facebook-f fs-5"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-twitter fs-5"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-linkedin-in fs-5"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-instagram fs-5"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row">
+                <div class="col-md-6 mb-3 mb-md-0">
+                    <p class="mb-0">&copy; 2023 SolarAnalytics. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="text-white text-decoration-none me-3">Privacy Policy</a>
+                    <a href="#" class="text-white text-decoration-none">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="main.js"></script>
+    
+</body>
+</html>
