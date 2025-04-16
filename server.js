@@ -90,7 +90,7 @@ app.post('/api/contact', async (req, res) => {
 });
 
 // ====== ADD DEBUG ROUTES HERE ======
-app.get('/api/debug-data', async (req, res) => {
+app.get('https://solar-proj.onrender.com/api/debug-data', async (req, res) => {
   try {
     const data = await mongoose.connection.db.collection('solarisai').find().toArray();
     res.json({
@@ -104,7 +104,7 @@ app.get('/api/debug-data', async (req, res) => {
   }
 });
 
-app.get('/api/debug-collections', async (req, res) => {
+app.get('https://solar-proj.onrender.com/api/debug-collections', async (req, res) => {
   try {
     const collections = await mongoose.connection.db.listCollections().toArray();
     res.json({
