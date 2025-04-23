@@ -181,7 +181,7 @@ document.getElementById('contactForm')?.addEventListener('submit', function(e) {
         message: document.getElementById('message').value
     };
 
-    fetch('/api/contact', {
+    fetch('https://solar-proj.onrender.com/api/contact', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
