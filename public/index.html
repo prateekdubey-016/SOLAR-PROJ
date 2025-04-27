@@ -35,6 +35,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#contact">Contact</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#login">Login</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -251,6 +254,86 @@
 </div>
 </section>
 
+    <!-- Login Section -->
+    <section class="login-section py-5 bg-light" id="login">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-body p-4">
+                            <h2 class="text-center fw-bold mb-4">Login</h2>
+                            <form id="loginForm">
+                                <div class="mb-3">
+                                    <label for="userType" class="form-label">Login As</label>
+                                    <select class="form-select" id="userType" required>
+                                        <option value="" selected disabled>Select User Type</option>
+                                        <option value="user">User</option>
+                                        <option value="technician">Technician</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="password" class="form-label">Password</label>
+                                    <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
+                                </div>
+                                <div class="d-grid">
+                                    <button type="submit" class="btn btn-primary">Login</button>
+                                </div>
+                            </form>
+                            <div class="text-center mt-3">
+                                <p class="mb-2">Don't have an account? <a href="#signup" class="text-primary">Create one</a></p>
+                                <p class="mb-2">Or login with:</p>
+                                <div class="d-flex justify-content-center gap-3">
+                                    <a href="#" class="btn btn-outline-danger"><i class="fab fa-google me-2"></i> Google</a>
+                                    <a href="#" class="btn btn-outline-primary"><i class="fab fa-facebook-f me-2"></i> Facebook</a>
+                                    <a href="#" class="btn btn-outline-dark"><i class="fab fa-github me-2"></i> GitHub</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Signup Section -->
+    <section class="signup-section py-5 bg-light" id="signup">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-body p-4">
+                            <h2 class="text-center fw-bold mb-4">Create an Account</h2>
+                            <form id="signupForm">
+                                <div class="mb-3">
+                                    <label for="signupName" class="form-label">Full Name</label>
+                                    <input type="text" class="form-control" id="signupName" placeholder="Enter your full name" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="signupEmail" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="signupEmail" placeholder="Enter your email" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="signupPassword" class="form-label">Password</label>
+                                    <input type="password" class="form-control" id="signupPassword" placeholder="Create a password" required>
+                                </div>
+                                <div class="d-grid">
+                                    <button type="submit" class="btn btn-primary">Sign Up</button>
+                                </div>
+                            </form>
+                            <div class="text-center mt-3">
+                                <p>Already have an account? <a href="#login" class="text-primary">Login</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- How It Works Section -->
     <section class="py-5">
         <div class="container">
@@ -457,6 +540,7 @@
                         <li><a href="#features" class="text-white text-decoration-none">Features</a></li>
                         <li><a href="#roi" class="text-white text-decoration-none">ROI Calculator</a></li>
                         <li><a href="#contact" class="text-white text-decoration-none">Contact</a></li>
+                        <li><a href="#login" class="text-white text-decoration-none">Login</a></li>
                     </ul>
                 </div>
                 <div class="col-md-3 mb-4 mb-md-0">
@@ -492,6 +576,80 @@
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="main.js"></script>
-    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const loginForm = document.getElementById('loginForm');
+
+            loginForm.addEventListener('submit', (event) => {
+                event.preventDefault(); // Prevent the default form submission
+
+                const userType = document.getElementById('userType').value;
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+
+                // Prepare the login data
+                const loginData = {
+                    userType,
+                    email,
+                    password,
+                };
+
+                // Send the login data to the server
+                fetch('/api/login-' + userType, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(loginData),
+                })
+                    .then((response) => response.json())
+                    .then((data) => {
+                        if (data.success) {
+                            alert(data.message);
+                        } else {
+                            alert('Login failed: ' + data.message);
+                        }
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
+                        alert('An error occurred while logging in.');
+                    });
+            });
+        });
+
+        app.post('/api/login-user', async (req, res) => {
+            try {
+                const { email, password } = req.body;
+                // Add your user authentication logic here
+                res.json({
+                    success: true,
+                    message: 'User login successful',
+                    user: { email },
+                });
+            } catch (error) {
+                res.status(500).json({
+                    success: false,
+                    message: 'User login failed',
+                });
+            }
+        });
+
+        app.post('/api/login-technician', async (req, res) => {
+            try {
+                const { email, password } = req.body;
+                // Add your technician authentication logic here
+                res.json({
+                    success: true,
+                    message: 'Technician login successful',
+                    technician: { email },
+                });
+            } catch (error) {
+                res.status(500).json({
+                    success: false,
+                    message: 'Technician login failed',
+                });
+            }
+        });
+    </script>
 </body>
 </html>

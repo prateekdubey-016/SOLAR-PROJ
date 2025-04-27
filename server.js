@@ -19,8 +19,6 @@ app.use((req, res, next) => {
     next();
 });
 
-// ... (keep all your existing requires and middleware code above)
-
 // MongoDB Connection
 mongoose.connect(process.env.MONGODB_URI)
   .then(() => console.log('✅ Connected to MongoDB!'))
@@ -39,7 +37,7 @@ const contactSchema = new mongoose.Schema({
   message: String,
   createdAt: { type: Date, default: Date.now }
 });
-const Contact = mongoose.model('Contact', contactSchema, 'solarisai'); // Note the collection name
+const Contact = mongoose.model('Contact', contactSchema, 'solarisai');
 
 // Routes
 app.get('/login-user', (req, res) => {
@@ -54,8 +52,7 @@ app.get('/login-technician', (req, res) => {
 app.post('/api/contact', async (req, res) => {
   try {
     const { name, email, phone, interest, message } = req.body;
-    
-    // Validate required fields
+
     if (!email || !name) {
       return res.status(400).json({
         success: false,
@@ -63,7 +60,6 @@ app.post('/api/contact', async (req, res) => {
       });
     }
 
-    // Create and save contact
     const newContact = await Contact.create({
       name,
       email,
@@ -73,7 +69,7 @@ app.post('/api/contact', async (req, res) => {
     });
 
     console.log('📩 New contact saved:', newContact);
-    
+
     res.json({
       success: true,
       message: 'Thank you for contacting us!',
@@ -89,7 +85,7 @@ app.post('/api/contact', async (req, res) => {
   }
 });
 
-// ====== ADD DEBUG ROUTES HERE ======
+// Debug Routes
 app.get('/api/debug-data', async (req, res) => {
   try {
     const data = await mongoose.connection.db.collection('solarisai').find().toArray();
@@ -116,13 +112,42 @@ app.get('/api/debug-collections', async (req, res) => {
   }
 });
 
-// ====== END DEBUG ROUTES ======
+// Login Routes
+app.post('/api/login-user', async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    // Add your authentication logic here
+    res.json({
+      success: true,
+      message: 'User login successful',
+      user: { email }
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: 'Login failed'
+    });
+  }
+});
 
-// Keep all your existing login routes below...
-app.post('/api/login-user', (req, res) => { /* ... */ });
-app.post('/api/login-technician', (req, res) => { /* ... */ });
+app.post('/api/login-technician', async (req, res) => {
+  try {
+    const { technicianId, password } = req.body;
+    // Add your authentication logic here
+    res.json({
+      success: true,
+      message: 'Technician login successful',
+      technician: { technicianId }
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: 'Login failed'
+    });
+  }
+});
 
-// ====== FINAL SERVER START ======
+// Start the Server
 app.listen(PORT, () => {
   console.log(`🚀 Server running at: http://localhost:${PORT}`);
 });
