@@ -6,8 +6,6 @@
 
 An intelligent web application that calculates solar panel investment returns with government subsidy integration and performance analytics.
 
-![Solar Dashboard Screenshot](https://solar-proj.onrender.com) <!-- Add a screenshot later -->
-**LIVE LINK **- https://solar-proj.onrender.com
 ## ✨ Features
 - **ROI Calculator**: Estimate savings based on location, roof area, and energy bills
 - **Subsidy Integration**: Automatic MNRE scheme calculations
