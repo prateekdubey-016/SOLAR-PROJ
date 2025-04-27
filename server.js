@@ -63,8 +63,8 @@ app.post('/api/contact', async (req, res) => {
 
     // Save the contact data to the database
     const newContact = await Contact.create({
-      name,
-      email,
+      name : name,
+      email : email,
       phone: phone || 'Not provided',
       interest: interest || 'General inquiry',
       message: message || 'No message provided',
