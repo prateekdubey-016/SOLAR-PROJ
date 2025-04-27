@@ -20,7 +20,7 @@ app.use((req, res, next) => {
 });
 
 // MongoDB Connection
-mongoose.connect(process.env.MONGODB_URI)
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('✅ Connected to MongoDB!'))
   .catch(err => console.error('❌ MongoDB connection error:', err));
 
@@ -53,34 +53,36 @@ app.post('/api/contact', async (req, res) => {
   try {
     const { name, email, phone, interest, message } = req.body;
 
-    if (!email || !name) {
+    // Validate required fields
+    if (!name || !email) {
       return res.status(400).json({
         success: false,
-        message: 'Name and email are required fields'
+        message: 'Name and email are required fields',
       });
     }
 
+    // Save the contact data to the database
     const newContact = await Contact.create({
       name,
       email,
       phone: phone || 'Not provided',
       interest: interest || 'General inquiry',
-      message: message || 'No message provided'
+      message: message || 'No message provided',
     });
 
     console.log('📩 New contact saved:', newContact);
 
+    // Send success response
     res.json({
       success: true,
       message: 'Thank you for contacting us!',
-      data: newContact
+      data: newContact,
     });
-
   } catch (error) {
     console.error('❌ Contact submission error:', error);
     res.status(500).json({
       success: false,
-      message: 'An error occurred while processing your request'
+      message: 'An error occurred while processing your request',
     });
   }
 });

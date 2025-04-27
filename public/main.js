@@ -170,30 +170,92 @@ function updateROIWithSubsidy(subsidyAmount) {
     createSavingsChart(before, after);
 }
 // Contact Form Submission
-document.getElementById('contactForm')?.addEventListener('submit', function(e) {
-    e.preventDefault();
-    
+
+document.addEventListener('DOMContentLoaded', () => {
+  const contactForm = document.getElementById('contactForm');
+
+  contactForm.addEventListener('submit', (event) => {
+    event.preventDefault(); // Prevent the default form submission
+
+    // Collect form data
     const formData = {
-        name: document.getElementById('name').value,
-        email: document.getElementById('email').value,
-        phone: document.getElementById('phone').value,
-        interest: document.getElementById('interest').value,
-        message: document.getElementById('message').value
+      name: document.getElementById('name').value.trim(),
+      email: document.getElementById('email').value.trim(),
+      phone: document.getElementById('phone').value.trim(),
+      interest: document.getElementById('interest').value.trim(),
+      message: document.getElementById('message').value.trim(),
     };
 
-    fetch('https://solar-proj.onrender.com/api/contact', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData)
+    // Check if name and email are provided
+    if (!formData.name || !formData.email) {
+      alert('Name and Email are required fields.');
+      return;
+    }
+
+    // Send data to the backend
+    fetch('/api/contact', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
     })
-    .then(response => response.json())
-    .then(data => {
-        alert(data.message);
-    })
-    .catch(error => {
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Failed to submit the form.');
+        }
+        return response.json();
+      })
+      .then((data) => {
+        if (data.success) {
+          alert('Thank you for contacting us!');
+          contactForm.reset(); // Clear the form
+        } else {
+          alert('Failed to submit the form: ' + data.message);
+        }
+      })
+      .catch((error) => {
         console.error('Error:', error);
-    });
+        alert('An error occurred while submitting the form.');
+      });
+  });
 });
-// Contact form submission
+
+// Backend API for Contact Form
+app.post('/api/contact', async (req, res) => {
+  try {
+    const { name, email, phone, interest, message } = req.body;
+
+    // Validate required fields
+    if (!name || !email) {
+      return res.status(400).json({
+        success: false,
+        message: 'Name and Email are required fields.',
+      });
+    }
+
+    // Save the contact data to the database
+    const newContact = await Contact.create({
+      name: name,
+      email: email,
+      phone: phone || 'Not provided',
+      interest: interest || 'General inquiry',
+      message: message || 'No message provided',
+    });
+
+    console.log('📩 New contact saved:', newContact);
+
+    // Send success response
+    res.json({
+      success: true,
+      message: 'Thank you for contacting us!',
+      data: newContact,
+    });
+  } catch (error) {
+    console.error('❌ Contact submission error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'An error occurred while processing your request.',
+    });
+  }
+});
