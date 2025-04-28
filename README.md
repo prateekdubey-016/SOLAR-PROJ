@@ -47,12 +47,16 @@ Express.js: RESTful API development.
 MongoDB Atlas: Cloud database storage.
 
 Mongoose: Object Data Modeling (ODM) for MongoDB.
+
 **Hosting Recommendations**
 
 Frontend: Netlify, Vercel, or similar.
 
-Backend: Render, Railway, or DigitalOcean App Platform.
-SOLAR-PROJ/
+**Backend:** 
+Render, Railway, or DigitalOcean App Platform.
+
+
+**SOLAR-PROJ/**
 ├── public/             # Frontend static assets
 │   ├── css/             # Stylesheets
 │   ├── js/              # JavaScript files
