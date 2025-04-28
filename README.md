@@ -38,6 +38,7 @@ CSS3: Styling with a focus on user experience.
 JavaScript: For dynamic, client-side interactivity.
 
 Bootstrap: For responsive layouts and components.
+
 **Backend**
 
 Node.js: Backend server environment.
@@ -52,7 +53,7 @@ Mongoose: Object Data Modeling (ODM) for MongoDB.
 
 Frontend: Netlify, Vercel, or similar.
 
-**Backend:** 
+Backend:
 Render, Railway, or DigitalOcean App Platform.
 
 
