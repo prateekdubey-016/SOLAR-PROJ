@@ -22,6 +22,11 @@ An intelligent web application that calculates solar panel investment returns wi
 
 🌐 Live Links (Deployment pending — ready for Netlify and Render or any preferred hosting platforms.)
 
+## 🌐 Live Links
+
+- **Frontend**: [Medwise Frontend](https://(https://solar-analysis.netlify.app/))  
+- **Backend**: [Medwise Backend](https://medwise-smart-healthcare.onrender.com/)
+
 
 ## 🚀 Quick Start
 
