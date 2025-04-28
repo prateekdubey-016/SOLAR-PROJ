@@ -53,14 +53,6 @@ app.post('/api/contact', async (req, res) => {
   try {
     const { name, email, phone, interest, message } = req.body;
 
-    // Validate required fields
-    if (!name || !email) {
-      return res.status(400).json({
-        success: false,
-        message: 'Name and email are required fields',
-      });
-    }
-
     // Save the contact data to the database
     const newContact = await Contact.create({
       name : name,
@@ -82,7 +74,7 @@ app.post('/api/contact', async (req, res) => {
     console.error('❌ Contact submission error:', error);
     res.status(500).json({
       success: false,
-      message: 'An error occurred while processing your request',
+      message: 'An error occurred while processing your request.',
     });
   }
 });

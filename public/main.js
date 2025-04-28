@@ -32,7 +32,13 @@ document.getElementById('roiCalculatorForm')?.addEventListener('submit', functio
         'pune': 0.95,
         'ahmedabad': 1.1,
         'jaipur': 1.15,
-        'lucknow': 1.0
+        'lucknow': 1.0, 
+        'kanpur': 0.95,
+        'nagpur': 1.05,   
+        'indore': 1.0,
+        'bhopal': 0.95,
+        'coimbatore': 1.0,
+        'visakhapatnam': 1.05
     };
     
     solarCost = solarCost / locationFactors[location];
@@ -186,11 +192,6 @@ document.addEventListener('DOMContentLoaded', () => {
       message: document.getElementById('message').value.trim(),
     };
 
-    // Check if name and email are provided
-    if (!formData.name || !formData.email) {
-      alert('Name and Email are required fields.');
-      return;
-    }
 
     // Send data to the backend
     fetch('/api/contact', {
@@ -226,14 +227,7 @@ app.post('/api/contact', async (req, res) => {
   try {
     const { name, email, phone, interest, message } = req.body;
 
-    // Validate required fields
-    if (!name || !email) {
-      return res.status(400).json({
-        success: false,
-        message: 'Name and Email are required fields.',
-      });
-    }
-
+    
     // Save the contact data to the database
     const newContact = await Contact.create({
       name: name,
@@ -245,6 +239,13 @@ app.post('/api/contact', async (req, res) => {
 
     console.log('📩 New contact saved:', newContact);
 
+
+
+    // Check if name and email are provided
+    if (!formData.name || !formData.email) {
+      alert('Name and Email are required fields.');
+      return;
+    }
     // Send success response
     res.json({
       success: true,
